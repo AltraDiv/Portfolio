@@ -5,50 +5,59 @@ import VitalSense from '../../../assets/VitalSense.png';
 import Tetris from '../../../assets/Tetris.png';
 import Driving from '../../../assets/Driving.jpg';
 import Compiler from '../../../assets/Compiler.webp';
+import TrackingTool from '../../../assets/TrackingTool.jpeg';
 
 const projects = [
-    {
-        id: 1,
-        title: 'Personal Portfolio Website',
-        category: 'Web Development',
-        imgSrc: Portfolio, 
-        githubLink: 'https://github.com/Altradiv/portfolio',
-    },
-    {
-        id: 2,
-        title: 'NASA Satelite Agriculture Tool',
-        category: 'Data Science',
-        imgSrc: Nasa, 
-        githubLink: 'https://github.com/AltraDiv/NasaSpaceApps',
-    },
-    {
-        id: 3,
-        title: 'VitalSense',
-        category: 'Web Developerment/AI',
-        imgSrc: VitalSense,
-        githubLink: 'https://github.com/AltraDiv/VitalSense',
-    },
-    {
-        id: 4,
-        title: 'Tetris',
-        category: 'Backend/Object Oriented Programming',
-        imgSrc: Tetris,
-        githubLink: 'https://github.com/AltraDiv/Tetris-Game',
-    },
-    {
-        id: 5,
-        title: 'Impaired Driving Detection',
-        category: 'FullStack/AI API\'s/Backend',
-        imgSrc: Driving,
-        githubLink: 'https://github.com/AltraDiv/ImpairedDrivingDetector',
-    },
-    {
-        id: 5,
-        title: 'Compiler',
-        category: 'Backend',
-        imgSrc: Compiler,
-        githubLink: 'https://github.com/AltraDiv/CompilerProject',
-    },
+	{
+		id: 1,
+		title: "Personal Portfolio Website",
+		category: "Web Development",
+		imgSrc: Portfolio,
+		githubLink: "https://github.com/Altradiv/portfolio",
+	},
+	{
+		id: 2,
+		title: "NASA Satelite Agriculture Tool",
+		category: "Data Science",
+		imgSrc: Nasa,
+		githubLink: "https://github.com/AltraDiv/NasaSpaceApps",
+	},
+	{
+		id: 3,
+		title: "VitalSense",
+		category: "Web Developerment/AI",
+		imgSrc: VitalSense,
+		githubLink: "https://github.com/AltraDiv/VitalSense",
+	},
+	{
+		id: 4,
+		title: "Tetris",
+		category: "Backend/Object Oriented Programming",
+		imgSrc: Tetris,
+		githubLink: "https://github.com/AltraDiv/Tetris-Game",
+	},
+	{
+		id: 5,
+		title: "Impaired Driving Detection",
+		category: "FullStack/AI API's/Backend",
+		imgSrc: Driving,
+		githubLink: "https://github.com/AltraDiv/ImpairedDrivingDetector",
+	},
+	{
+		id: 5,
+		title: "Compiler",
+		category: "Backend",
+		imgSrc: Compiler,
+		githubLink: "https://github.com/AltraDiv/CompilerProject",
+	},
+	{
+		id: 6,
+		title: "Other",
+		category: "Backend",
+		imgSrc: TrackingTool,
+		githubLink:
+			"https://www.dropbox.com/scl/fo/qe9rv0qdro6yfar9aw7uf/ABOw8fx2eX4zAnIJ_mYS7LQ?rlkey=wqttxajyni1rtivoh78v24ptg&dl=0",
+	},
 ];
 
 const Projects: React.FC = () => {

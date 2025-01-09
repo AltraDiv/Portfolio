@@ -30,7 +30,7 @@ const Experience: React.FC = () => {
             title: 'Propulsion Engineer',
             company: 'Waterloo Rocketry',
             duration: 'July 2023 - Present',
-            description: 'Helped develop CAD drawings using SolidWorks, machined nozzles, ablative test stands and planned coldflow tests and static fire tests.',
+            description: 'Helped develop CAD drawings using SolidWorks, machined nozzles, ablative test stands and planned coldflow tests and static fire tests. Currently working on a flight critical project of inter-tank coupler.',
         }
     ];
 
