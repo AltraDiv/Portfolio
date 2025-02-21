@@ -8,7 +8,7 @@ const Education: React.FC = () => {
                 <p className="text-gray-600">Aug 2021 - May 2024</p>
                 <h3 className="text-xl font-semibold text-gray-800">Bachelor of Computational Mathematics, Honours</h3>
                 <p className="text-gray-500">University of Waterloo</p>
-                <p className="text-gray-500 mt-2">GPA: 3.2</p>
+                <p className="text-gray-500 mt-2">GPA: 3.1</p>
                 <p className="text-gray-600 mt-4">
                     Computational Mathematics with a Minor in Computing. Relevant Courses:
                     Linear Algebra I & II, Calculus III, Introduction To Machine Learning, 
