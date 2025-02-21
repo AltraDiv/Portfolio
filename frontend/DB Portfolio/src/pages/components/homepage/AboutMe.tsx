@@ -8,7 +8,7 @@ const AboutMe: React.FC = () => {
             <p className="text-gray-600 mb-4">
                 Hi, I am Divjot Bhogal. I am an aspiring FullStack/Backend Engineer and developer with experience in building real-time systems
                 and working on projects related to machine learning and things I find fun/interesting. Currently, I’m studying Computational Mathematics at the University of Waterloo
-                in my 4a term.
+                in my 4b term with a Minor in Computing.
             </p>
             <div className="flex justify-between items-center gap-4">
                 <a 
