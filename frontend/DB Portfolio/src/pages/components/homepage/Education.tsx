@@ -14,7 +14,7 @@ const Education: React.FC = () => {
                     Linear Algebra I & II, Calculus III, Introduction To Machine Learning, 
                     Object Oriented Programming (CS135, CS136, CS246, etc), Data Structures and Algorithms,
                     Optimization (Co250), Applied Cryptography, Introduction to Computational Mathematics, 
-                    Computational Statistics and Data Analysis, Deterministic OR Models.
+                    Computational Statistics and Data Analysis, Deterministic OR Models, Neural Networks.
                 </p>
             </div>
             <div className="bg-white p-4 rounded-lg shadow">
