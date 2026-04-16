@@ -1,54 +1,123 @@
 import React from 'react';
+import { motion } from 'framer-motion';
+import { Building2, Calendar } from 'lucide-react';
+
+const experiences = [
+  {
+    title: 'Founding Software Engineer',
+    company: 'Kindr',
+    location: 'Calgary, AB (Remote)',
+    duration: 'Apr 2025 - Apr 2026',
+    highlights: [
+      'Built healthcare AI agents (Ultravox, LiveKit, Rime TTS) serving 2,200+ calls/mo across 52+ clinics',
+      'Designed AI orchestration with RAG pipelines and multi-provider LLM load balancing',
+      'Built versioned FastAPI microservices with auth, validation, and zero-downtime releases',
+      'Managed infrastructure with Terraform, Redis, Kafka, and Application Insights',
+    ],
+    tags: ['Python', 'FastAPI', 'LLMs', 'Terraform', 'Redis', 'Kafka'],
+  },
+  {
+    title: 'Backend Developer Intern',
+    company: 'CrackInterview',
+    location: 'Mississauga, ON',
+    duration: 'Jul 2024 - Oct 2024',
+    highlights: [
+      'Built AI chatbot (DialoGPT, PyTorch) boosting Tier-1 support throughput 30%',
+      'Built real-time messaging with WebSockets and asyncio',
+      'Integrated video conferencing via WebRTC with secure AWS deployment',
+    ],
+    tags: ['PyTorch', 'WebSockets', 'AWS', 'WebRTC'],
+  },
+  {
+    title: 'Junior Full Stack Developer',
+    company: 'Replic',
+    location: 'Waterloo, ON',
+    duration: 'Jul 2021 - May 2022',
+    highlights: [
+      'Delivered features in ASP.NET MVC/Core with C# and SQL Server (AWS RDS)',
+      'Optimized API performance by 20%; added unit testing and CI/CD',
+    ],
+    tags: ['C#', 'ASP.NET', 'SQL Server', 'AWS RDS'],
+  },
+  {
+    title: 'Jr. Software Engineer, BI',
+    company: 'Trillium Health Partners',
+    location: 'Mississauga, ON',
+    duration: 'Aug 2019 - Feb 2020',
+    highlights: [
+      'Built Priority Tracking Tool for 1.75M+ annual patient visits, improving efficiency 35%',
+      'Developed dashboards using SQL, Oracle, and .NET for clinical reporting',
+    ],
+    tags: ['SQL', 'Oracle', '.NET', 'ETL'],
+  },
+];
 
 const Experience: React.FC = () => {
-    const experiences = [
-        {
-            title: 'Backend Developer',
-            company: 'CrackInterview',
-            duration: 'July 2024 - September 2024',
-            description: 'Researched, documented, and implemented a chatbot using DialoGPT and PyTorch, trained with PDF questionnaires and deployed with Flask. Led backend maintenance and AI integration, and developed a real-time, one-on-one chat system using WebSockets and asyncio.',
-        },
-        {
-            title: 'Software Developer, Business Intelligence',
-            company: 'Credit Valley Hospital; Trillium Health Partners',
-            duration: 'Aug 2019 - Feb 2020',
-            description: 'Developed custom websites and reports to streamline work and reduce wait times for physicians and staff. Spearheaded the "Priority Tracking Tool" project, significantly enhancing wait times for 1.75 million patients across Trillium Health Partners. Used MSSQL, C#, HTML, CSS, and JavaScript for full-stack development.',
-        },
-        {
-            title: 'Junior Full Stack Developer',
-            company: 'Replic',
-            duration: 'July 2021 - May 2022',
-            description: 'Developed a startup website using MVC and ASP.NET in Microsoft Visual Studio, following JIRA tasks to implement controller logic. Utilized MSSQL for database management, C# for backend, CsHtml for frontend views, and AWS RDS for deployment.',
-        },
-        {
-            title: 'AI Mentor',
-            company: 'GenAI Genesis Hackathon',
-            duration: 'March 2024',
-            description: 'Selected as one of 15 mentors out of over 1200 applicants to assist 300 students. Awarded "Best Mentor" for exceptional support in APIs, debugging, and machine learning guidance.',
-        },
-        {
-            title: 'Propulsion Engineer',
-            company: 'Waterloo Rocketry',
-            duration: 'July 2023 - Present',
-            description: 'Helped develop CAD drawings using SolidWorks, machined nozzles, ablative test stands and planned coldflow tests and static fire tests. Currently working on a flight critical project of inter-tank coupler.',
-        }
-    ];
+  return (
+    <motion.section
+      initial={{ opacity: 0, y: 40 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: '-100px' }}
+      transition={{ duration: 0.7 }}
+      className="glass-dark rounded-2xl p-8 mb-8"
+    >
+      <h2 className="section-heading gradient-text mb-8">Experience</h2>
 
-    return (
-        <section className="bg-gray-50 p-6 rounded-lg shadow-md mb-8">
-            <h2 className="text-2xl font-bold text-gray-800 mb-4">Work Experience</h2>
-            <div className="flex flex-col gap-4">
-                {experiences.map((experience, index) => (
-                    <div key={index} className="border-b pb-4">
-                        <h3 className="text-xl font-semibold text-gray-800">{experience.title}</h3>
-                        <p className="text-gray-600">{experience.company}</p>
-                        <p className="text-gray-500">{experience.duration}</p>
-                        <p className="text-gray-700 mt-1">{experience.description}</p>
-                    </div>
-                ))}
-            </div>
-        </section>
-    );
+      <div className="relative">
+        {/* Timeline line */}
+        <div className="absolute left-[11px] top-2 bottom-2 w-px bg-gradient-to-b from-accent via-purple-500/50 to-transparent" />
+
+        <div className="space-y-8">
+          {experiences.map((exp, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.1, duration: 0.5 }}
+              className="relative pl-10"
+            >
+              {/* Timeline dot */}
+              <div className="absolute left-0 top-1.5 w-[23px] h-[23px] rounded-full bg-gray-950 border-2 border-accent flex items-center justify-center">
+                <div className="w-2 h-2 rounded-full bg-accent-light" />
+              </div>
+
+              <div className="p-5 rounded-xl bg-white/[0.03] border border-white/5 hover:border-accent/20 transition-all duration-300">
+                <div className="flex flex-wrap items-start justify-between gap-2 mb-2">
+                  <div>
+                    <h3 className="text-lg font-semibold text-white">{exp.title}</h3>
+                    <p className="text-accent-light flex items-center gap-1.5 text-sm">
+                      <Building2 size={14} />
+                      {exp.company} — {exp.location}
+                    </p>
+                  </div>
+                  <span className="text-xs text-gray-500 flex items-center gap-1 whitespace-nowrap">
+                    <Calendar size={12} />
+                    {exp.duration}
+                  </span>
+                </div>
+
+                <ul className="space-y-1.5 mb-3">
+                  {exp.highlights.map((h, i) => (
+                    <li key={i} className="text-gray-400 text-sm flex gap-2">
+                      <span className="text-accent-light mt-1.5 shrink-0">▸</span>
+                      {h}
+                    </li>
+                  ))}
+                </ul>
+
+                <div className="flex flex-wrap gap-1.5">
+                  {exp.tags.map((tag) => (
+                    <span key={tag} className="chip !text-[10px] !px-2 !py-0.5">{tag}</span>
+                  ))}
+                </div>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </motion.section>
+  );
 };
 
 export default Experience;

@@ -1,45 +1,104 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 import Projects from './Projects';
 
+const skills = [
+  { category: 'Languages', items: ['Python', 'TypeScript', 'C#', 'C++', 'SQL'] },
+  { category: 'AI/ML', items: ['OpenAI', 'Claude', 'DeepSeek', 'RAG', 'PyTorch', 'MLOps'] },
+  { category: 'Backend', items: ['FastAPI', 'REST APIs', 'WebSockets', 'Docker', 'Redis', 'Kafka'] },
+  { category: 'Cloud', items: ['AWS', 'Azure', 'Terraform', 'CI/CD', 'Microservices'] },
+];
+
 const AboutMe: React.FC = () => {
-    return (
-        <section className="bg-white text-gray-300 min-h-screen">
-            <div className="max-w-screen-lg px-4 py-12 mx-auto lg:px-8 sm:py-16 lg:py-24">
-                {/* About Me Section */}
-                <div className="text-center mb-16">
-                    <h1 className="text-4xl font-bold text-black">About Me</h1>
-                    <p className="mt-4 text-gray-700">
-                        I’m a passionate software developer with experience in web and mobile app development.
-                        I love creating solutions that are efficient and most importantly work. I love learning
-                        different ways to solve problems. I also love rockets!
-                    </p>
-                </div>
+  return (
+    <section className="min-h-screen pt-24 pb-16">
+      <div className="max-w-5xl mx-auto px-6">
+        {/* Hero */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7 }}
+          className="text-center mb-20"
+        >
+          <h1 className="text-5xl sm:text-6xl font-bold tracking-tight mb-6">
+            About <span className="gradient-text">Me</span>
+          </h1>
+          <p className="max-w-2xl mx-auto text-gray-400 text-lg leading-relaxed">
+            Software Engineer with a B.Math from the University of Waterloo. I specialize in backend 
+            systems, AI/ML integration, and cloud infrastructure. I've built healthcare AI agents at 
+            scale, designed RAG pipelines with multi-provider LLM orchestration, and shipped production 
+            microservices serving thousands of users.
+          </p>
+        </motion.div>
 
-                {/* Skills and Interests */}
-                <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-2">
-                    <div className="rounded-lg p-6 bg-gray-800 shadow-lg">
-                        <h2 className="text-2xl font-semibold text-white mb-4">Skills</h2>
-                        <ul className="list-disc list-inside text-gray-400">
-                            <li>React.js, TypeScript, C++</li>
-                            <li>Python, Flask</li>
-                            <li>Machine Learning with PyTorch</li>
-                            <li>SQL Databases</li>
-                        </ul>
-                    </div>
-                    <div className="rounded-lg p-6 bg-gray-800 shadow-lg">
-                        <h2 className="text-2xl font-semibold text-white mb-4">Interests</h2>
-                        <p className="text-gray-400">
-                            Apart from coding, I enjoy gaming, am currently in the Waterloo Rocket Club, and love to read books.
-                            I also have a keen interest in startups and hope to create innovative solutions.
-                        </p>
-                    </div>
+        {/* Skills Grid */}
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7 }}
+          className="mb-20"
+        >
+          <h2 className="section-heading text-center mb-10">
+            Technical <span className="gradient-text">Skills</span>
+          </h2>
+          <div className="grid sm:grid-cols-2 gap-4">
+            {skills.map((group, i) => (
+              <motion.div
+                key={group.category}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1 }}
+                className="glass-dark rounded-2xl p-6 card-hover"
+              >
+                <h3 className="text-sm font-semibold text-accent-light uppercase tracking-wider mb-3">
+                  {group.category}
+                </h3>
+                <div className="flex flex-wrap gap-2">
+                  {group.items.map((item) => (
+                    <span key={item} className="chip">{item}</span>
+                  ))}
                 </div>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
 
-                <Projects />
-                
+        {/* Interests */}
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7 }}
+          className="glass-dark rounded-2xl p-8 mb-20"
+        >
+          <h2 className="section-heading mb-6">
+            Beyond <span className="gradient-text">Code</span>
+          </h2>
+          <div className="grid sm:grid-cols-3 gap-6">
+            <div className="text-center p-4 rounded-xl bg-white/[0.03] border border-white/5">
+              <p className="text-2xl mb-2">🚀</p>
+              <h3 className="text-white font-semibold mb-1">Waterloo Rocketry</h3>
+              <p className="text-gray-500 text-sm">Propulsion engineer; contributed to Canada's first amateur liquid rocket launch</p>
             </div>
-        </section>
-    );
+            <div className="text-center p-4 rounded-xl bg-white/[0.03] border border-white/5">
+              <p className="text-2xl mb-2">🏆</p>
+              <h3 className="text-white font-semibold mb-1">GenAI Hackathon</h3>
+              <p className="text-gray-500 text-sm">Best mentor of 1,200+ applicants; mentored 300 students on AI/ML</p>
+            </div>
+            <div className="text-center p-4 rounded-xl bg-white/[0.03] border border-white/5">
+              <p className="text-2xl mb-2">🎮</p>
+              <h3 className="text-white font-semibold mb-1">PickUpESports</h3>
+              <p className="text-gray-500 text-sm">Founder — React/Vite + FastAPI + PostgreSQL platform deployed on AWS</p>
+            </div>
+          </div>
+        </motion.div>
+
+        <Projects />
+      </div>
+    </section>
+  );
 };
 
 export default AboutMe;

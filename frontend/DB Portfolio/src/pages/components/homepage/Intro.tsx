@@ -1,62 +1,160 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { motion } from 'framer-motion';
+import { MapPin, ArrowDown } from 'lucide-react';
+import { GitHubIcon, LinkedInIcon } from '../../../components/icons';
 import ProfilePicture from '../../../assets/ProfilePicture.jpg';
 
+const roles = ['Software Engineer', 'AI/ML Builder', 'Backend Architect', 'Startup Founder'];
+
 const Intro: React.FC = () => {
-    return (
-      <>
-        <section className="bg-white antialiased">
-          <div className="max-w-screen-xl px-4 py-8 mx-auto lg:px-6 sm:py-16 lg:py-24">
-            <div className="max-w-2xl mx-auto text-center">
-              <img
-                src={ProfilePicture}
-                alt="Divjot Bhogal"
-                className="w-45 h-45 mx-auto rounded-full mb-4"
-              />
-              <h2 className="text-3xl font-extrabold leading-tight tracking-tight text-gray-900 sm:text-4xl">
-                Divjot Bhogal
-              </h2>
-              <p className="mt-4 text-base font-normal text-gray-500 sm:text-xl">
-                Student at the University of Waterloo for Computational Mathematics
-              </p>
-            </div>
-  
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-20 gap-y-12 mt-12 sm:mt-16 justify-center mx-auto lg:grid-cols-2 lg:gap-x-8 lg:gap-y-8">
-              <div className="space-y-4 text-center">
-                <h3 className="text-2xl font-bold leading-tight text-gray-900">
-                  LinkedIn
-                </h3>
-                <p className="text-lg font-normal text-gray-500">
-                  Check out my LinkedIn profile for work experience and updates!
-                </p>
-                <a href="https://www.linkedin.com/in/divjot-bhogal" target="_blank" rel="noopener noreferrer"
-                   className="inline-flex items-center justify-center w-12 h-12 bg-gray-200 rounded-full hover:bg-gray-300"
-                   aria-label="LinkedIn">
-                  <svg className="w-6 h-6 text-gray-700" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M19 0H5C2.2 0 0 2.2 0 5v14c0 2.8 2.2 5 5 5h14c2.8 0 5-2.2 5-5V5c0-2.8-2.2-5-5-5zm-8 18H8v-8h3v8zm-1.5-9.1c-1 0-1.7-.8-1.7-1.7s.8-1.7 1.7-1.7 1.7.8 1.7 1.7-.7 1.7-1.7 1.7zM20 18h-3v-4c0-1.1-1-2-2-2s-2 .9-2 2v4h-3v-8h3v1.3c.6-.8 1.6-1.3 2.5-1.3 1.9 0 3.5 1.6 3.5 3.5v4.5z"/>
-                  </svg>
-                </a>
-              </div>
-  
-              <div className="space-y-4 text-center">
-                <h3 className="text-2xl font-bold leading-tight text-gray-900">
-                  GitHub
-                </h3>
-                <p className="text-lg font-normal text-gray-500">
-                  Check out my GitHub profile for projects and contributions!
-                </p>
-                <a href="https://github.com/altraDiv" target="_blank" rel="noopener noreferrer"
-                   className="inline-flex items-center justify-center w-12 h-12 bg-gray-200 rounded-full hover:bg-gray-300"
-                   aria-label="GitHub">
-                  <svg className="w-6 h-6 text-gray-700" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M12 .3C5.4.3 0 5.7 0 12.3c0 5.3 3.4 9.8 8.2 11.4.6.1.8-.2.8-.5v-2c-3.3.7-4-1.5-4-1.5-.6-1.4-1.3-1.7-1.3-1.7-1-.7.1-.7.1-.7 1.1.1 1.7 1.1 1.7 1.1.9 1.6 2.3 1.1 2.8.8.1-.6.4-1.1.7-1.4-2.6-.3-5.3-1.3-5.3-5.7 0-1.3.5-2.5 1.2-3.4-.1-.3-.5-1.7.1-3.5 0 0 1-.3 3.4 1.3 1-.3 2.2-.5 3.3-.5 1.1 0 2.3.2 3.3.5 2.4-1.6 3.4-1.3 3.4-1.3.6 1.8.2 3.2.1 3.5.8.9 1.2 2.1 1.2 3.4 0 4.5-2.7 5.4-5.3 5.7.4.3.8.9.8 1.8v2.7c0 .3.3.6.8.5C20.6 22 24 17.6 24 12.3 24 5.7 18.6.3 12 .3z"/>
-                  </svg>
-                </a>
-              </div>
-            </div>
+  const [roleIndex, setRoleIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setRoleIndex((prev) => (prev + 1) % roles.length);
+    }, 2500);
+    return () => clearInterval(interval);
+  }, []);
+
+  return (
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+      {/* Ambient background */}
+      <div className="absolute inset-0">
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-accent/10 rounded-full blur-3xl animate-pulse-slow" />
+        <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-purple-500/10 rounded-full blur-3xl animate-pulse-slow" style={{ animationDelay: '2s' }} />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-pink-500/5 rounded-full blur-3xl" />
+      </div>
+
+      <div className="relative z-10 max-w-4xl mx-auto px-6 text-center pt-24">
+        {/* Profile picture */}
+        <motion.div
+          initial={{ scale: 0, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          transition={{ type: 'spring', stiffness: 200, damping: 20, delay: 0.2 }}
+          className="relative inline-block mb-8"
+        >
+          <div className="w-28 h-28 rounded-full p-[2px] bg-gradient-to-r from-accent via-purple-500 to-pink-500 animate-float">
+            <img
+              src={ProfilePicture}
+              alt="Divjot Bhogal"
+              className="w-full h-full rounded-full object-cover border-2 border-gray-950"
+            />
           </div>
-        </section>
-      </>
-    );
-}
+          <div className="absolute -bottom-1 -right-1 w-6 h-6 bg-green-500 rounded-full border-2 border-gray-950" />
+        </motion.div>
+
+        {/* Chip */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.4 }}
+          className="mb-6"
+        >
+          <span className="chip">
+            <MapPin size={12} className="mr-1" /> Mississauga, ON, Canada
+          </span>
+        </motion.div>
+
+        {/* Name */}
+        <motion.h1
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.5, duration: 0.8 }}
+          className="text-5xl sm:text-7xl font-bold tracking-tight mb-4"
+        >
+          Divjot{' '}
+          <span className="gradient-text">Bhogal</span>
+        </motion.h1>
+
+        {/* Rotating role */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.7 }}
+          className="h-10 mb-6 overflow-hidden"
+        >
+          <motion.p
+            key={roleIndex}
+            initial={{ y: 30, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            exit={{ y: -30, opacity: 0 }}
+            transition={{ duration: 0.4 }}
+            className="text-xl sm:text-2xl text-gray-400 font-medium"
+          >
+            {roles[roleIndex]}
+          </motion.p>
+        </motion.div>
+
+        {/* Bio */}
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.9 }}
+          className="max-w-2xl mx-auto text-gray-500 text-lg leading-relaxed mb-10"
+        >
+          B.Math from University of Waterloo. I build scalable systems, AI-powered products, 
+          and ship fast. Previously founding engineer at a healthcare AI startup serving 52+ clinics.
+        </motion.p>
+
+        {/* CTAs */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 1.1 }}
+          className="flex flex-wrap items-center justify-center gap-4 mb-16"
+        >
+          <a href="/about" className="btn-primary">
+            View My Work
+            <ArrowDown size={16} className="animate-bounce" />
+          </a>
+          <a href="/contact" className="btn-outline">
+            Get in Touch
+          </a>
+        </motion.div>
+
+        {/* Social links */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1.3 }}
+          className="flex items-center justify-center gap-4"
+        >
+          <a
+            href="https://www.linkedin.com/in/divjot-bhogal"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="p-3 rounded-xl glass text-gray-400 hover:text-accent-light hover:border-accent/30 transition-all duration-300"
+          >
+            <LinkedInIcon size={20} />
+          </a>
+          <a
+            href="https://github.com/AltraDiv"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="p-3 rounded-xl glass text-gray-400 hover:text-accent-light hover:border-accent/30 transition-all duration-300"
+          >
+            <GitHubIcon size={20} />
+          </a>
+        </motion.div>
+      </div>
+
+      {/* Scroll indicator */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 2 }}
+        className="absolute bottom-8 left-1/2 -translate-x-1/2"
+      >
+        <div className="w-6 h-10 rounded-full border-2 border-white/20 flex items-start justify-center p-1.5">
+          <motion.div
+            animate={{ y: [0, 12, 0] }}
+            transition={{ duration: 1.5, repeat: Infinity }}
+            className="w-1.5 h-1.5 rounded-full bg-accent-light"
+          />
+        </div>
+      </motion.div>
+    </section>
+  );
+};
 
 export default Intro;

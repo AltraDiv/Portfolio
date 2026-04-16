@@ -1,34 +1,64 @@
 import React from 'react';
+import { motion } from 'framer-motion';
+import { GraduationCap, Award } from 'lucide-react';
 
 const Education: React.FC = () => {
-    return (
-        <section className="bg-gray-50 p-6 rounded-lg shadow-md mb-8">
-            <h2 className="text-2xl font-bold text-gray-800 mb-4">Education</h2>
-            <div className="bg-white p-4 rounded-lg shadow mb-4">
-                <p className="text-gray-600">Aug 2021 - May 2024</p>
-                <h3 className="text-xl font-semibold text-gray-800">Bachelor of Computational Mathematics, Honours</h3>
-                <p className="text-gray-500">University of Waterloo</p>
-                <p className="text-gray-500 mt-2">GPA: 3.1</p>
-                <p className="text-gray-600 mt-4">
-                    Computational Mathematics with a Minor in Computing. Relevant Courses:
-                    Linear Algebra I & II, Calculus III, Introduction To Machine Learning, 
-                    Object Oriented Programming (CS135, CS136, CS246, etc), Data Structures and Algorithms,
-                    Optimization (Co250), Applied Cryptography, Introduction to Computational Mathematics, 
-                    Computational Statistics, Data Analysis, Deterministic OR Models, and Neural Networks.
-                </p>
+  return (
+    <motion.section
+      initial={{ opacity: 0, y: 40 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: '-100px' }}
+      transition={{ duration: 0.7 }}
+      className="glass-dark rounded-2xl p-8 mb-8"
+    >
+      <h2 className="section-heading gradient-text mb-8">Education</h2>
+
+      <div className="space-y-6">
+        {/* University */}
+        <div className="p-5 rounded-xl bg-white/[0.03] border border-white/5 hover:border-accent/20 transition-all duration-300">
+          <div className="flex items-start gap-4">
+            <div className="p-3 rounded-xl bg-accent/10 text-accent-light shrink-0">
+              <GraduationCap size={24} />
             </div>
-            <div className="bg-white p-4 rounded-lg shadow">
-                <p className="text-gray-600">Sept 2017 - June 2020</p>
-                <h3 className="text-xl font-semibold text-gray-800">Highschool</h3>
-                <p className="text-gray-500">Father Michael Goetz Secondary School</p>
-                <p className="text-gray-500 mt-2">Average: 92%</p>
-                <p className="text-gray-600 mt-4">
-                   Graduated with a 92% average and an ICT SHSM (Specialist High Skills Majour) Certificate Red Emblem in Diploma.
-                   Took courses in Computer Science, Calculus, Advanced Functions and Technology.
-                </p>
+            <div className="flex-1">
+              <div className="flex flex-wrap items-start justify-between gap-2">
+                <div>
+                  <h3 className="text-lg font-semibold text-white">Bachelor of Mathematics</h3>
+                  <p className="text-accent-light text-sm">University of Waterloo</p>
+                </div>
+                <span className="chip">2020 - 2025</span>
+              </div>
+              <p className="text-gray-400 text-sm mt-2">Computational Mathematics, Minor in Computing</p>
+              <div className="flex flex-wrap gap-1.5 mt-3">
+                {['DS&A', 'ML', 'Neural Networks', 'OOP (CS246)', 'Cryptography', 'Optimization', 'OS'].map((c) => (
+                  <span key={c} className="chip !text-[10px] !px-2 !py-0.5">{c}</span>
+                ))}
+              </div>
             </div>
-        </section>
-    );
+          </div>
+        </div>
+
+        {/* High School */}
+        <div className="p-5 rounded-xl bg-white/[0.03] border border-white/5 hover:border-accent/20 transition-all duration-300">
+          <div className="flex items-start gap-4">
+            <div className="p-3 rounded-xl bg-purple-500/10 text-purple-400 shrink-0">
+              <Award size={24} />
+            </div>
+            <div className="flex-1">
+              <div className="flex flex-wrap items-start justify-between gap-2">
+                <div>
+                  <h3 className="text-lg font-semibold text-white">High School Diploma</h3>
+                  <p className="text-purple-400 text-sm">Father Michael Goetz Secondary School</p>
+                </div>
+                <span className="chip !bg-purple-500/10 !text-purple-400 !border-purple-500/20">2017 - 2020</span>
+              </div>
+              <p className="text-gray-400 text-sm mt-2">92% average · ICT SHSM Certificate Red Emblem</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </motion.section>
+  );
 };
 
 export default Education;
