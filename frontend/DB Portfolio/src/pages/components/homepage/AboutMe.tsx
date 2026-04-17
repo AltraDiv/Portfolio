@@ -8,7 +8,7 @@ const stats = [
   { icon: Briefcase, value: '3+', label: 'Years Experience' },
   { icon: Rocket, value: '52+', label: 'Clinics Served' },
 ];
-
+// hi
 const AboutMe: React.FC = () => {
   return (
     <motion.section
