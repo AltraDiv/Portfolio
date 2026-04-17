@@ -51,7 +51,7 @@ const Intro: React.FC = () => {
           className="mb-6"
         >
           <span className="chip">
-            <MapPin size={12} className="mr-1" /> Mississauga, ON, Canada
+            <MapPin size={12} className="mr-1" /> Toronto, ON, Canada
           </span>
         </motion.div>
 
