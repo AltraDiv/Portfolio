@@ -21,7 +21,7 @@ const Stats: React.FC = () => {
               key={s.label}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: false }}
               transition={{ delay: i * 0.1, duration: 0.6 }}
               className="text-center"
             >
@@ -42,7 +42,7 @@ const Stats: React.FC = () => {
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: false }}
           transition={{ duration: 0.8 }}
           className="text-center text-2xl lg:text-3xl text-gray-300 font-light leading-relaxed max-w-4xl mx-auto"
         >

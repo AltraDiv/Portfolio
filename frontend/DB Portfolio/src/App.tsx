@@ -6,12 +6,14 @@ import About from './pages/About';
 import Contact from './pages/Contact';
 import Navbar from './pages/components/Navbar';
 import { MarvelIntro } from './components/MarvelIntro';
+import GradientBackground from './components/GradientBackground';
 
 const App: React.FC = () => {
   const [showIntro, setShowIntro] = useState(window.location.pathname === '/');
 
   return (
     <>
+      <GradientBackground fixed />
       <AnimatePresence>
         {showIntro && (
           <MarvelIntro key="intro" onComplete={() => setShowIntro(false)} />

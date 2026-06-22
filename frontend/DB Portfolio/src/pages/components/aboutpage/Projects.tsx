@@ -72,7 +72,7 @@ const Projects: React.FC = () => {
     <motion.section
       initial={{ opacity: 0, y: 40 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
+      viewport={{ once: false }}
       transition={{ duration: 0.7 }}
     >
       <h2 className="section-heading text-center mb-12">
@@ -88,7 +88,7 @@ const Projects: React.FC = () => {
             rel="noopener noreferrer"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: false }}
             transition={{ delay: i * 0.08 }}
             className="group glass-dark rounded-2xl overflow-hidden card-hover block"
           >

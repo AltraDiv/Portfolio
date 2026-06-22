@@ -35,7 +35,7 @@ const AboutMe: React.FC = () => {
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: false }}
           transition={{ duration: 0.7 }}
           className="mb-20"
         >
@@ -48,7 +48,7 @@ const AboutMe: React.FC = () => {
                 key={group.category}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
+                viewport={{ once: false }}
                 transition={{ delay: i * 0.1 }}
                 className="glass-dark rounded-2xl p-6 card-hover"
               >
@@ -69,7 +69,7 @@ const AboutMe: React.FC = () => {
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: false }}
           transition={{ duration: 0.7 }}
           className="glass-dark rounded-2xl p-8 mb-20"
         >

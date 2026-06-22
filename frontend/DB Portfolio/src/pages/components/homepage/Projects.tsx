@@ -101,7 +101,7 @@ const Projects: React.FC = () => {
     <motion.section
       initial={{ opacity: 0, y: 40 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: '-100px' }}
+      viewport={{ once: false, margin: '-100px' }}
       transition={{ duration: 0.7 }}
       className="glass-dark rounded-2xl p-8 mb-8"
     >
@@ -113,7 +113,7 @@ const Projects: React.FC = () => {
             key={project.title}
             initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: false }}
             transition={{ delay: i * 0.1, duration: 0.5 }}
             className="p-5 rounded-xl bg-white/[0.03] border border-white/5 hover:border-accent/20 transition-all duration-300 flex flex-col gap-4"
           >

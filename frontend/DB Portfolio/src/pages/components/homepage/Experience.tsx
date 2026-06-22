@@ -1,179 +1,212 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Building2, Calendar, ExternalLink } from 'lucide-react';
+import { Sparkles, ExternalLink } from 'lucide-react';
 
-const experiences = [
+interface Card {
+  title: string;
+  detail: string;
+}
+
+interface Experience {
+  company: string;
+  title: string;
+  location: string;
+  duration: string;
+  link?: string;
+  summary: string;
+  cards: Card[];
+  tags: string[];
+}
+
+const experiences: Experience[] = [
   {
-    title: 'Propulsion Engineer',
-    company: 'Waterloo Rocketry Design Team',
-    location: 'Waterloo, ON',
-    duration: 'Jun 2023 - Present',
-    link: null,
-    highlights: [
-      "Contributed to Canada's first amateur liquid rocket launch, achieving a ~1.2 km apogee",
-      'Directed design and stress analysis of the inter-tank coupler assembly connecting rocket stages; coordinated CAD modeling and machining to ensure structural integrity during launch',
-      'Created detailed SolidWorks CAD models; oversaw nozzle machining operations and facilitated cold flow and static fire tests through weekly team coordination ahead of LC competition',
-    ],
-    tags: ['SolidWorks', 'CAD', 'Propulsion', 'Stress Analysis', 'Static Fire'],
-  },
-  {
-    title: 'Founding Software Engineer',
-    company: 'Kindr',
-    location: 'Calgary, AB (Remote)',
-    duration: 'Apr 2025 - Jun 2026',
-    link: null,
-    highlights: [
-      'Built healthcare AI agents (Ultravox, LiveKit, Rime TTS) serving 2,200+ calls/mo across 52+ clinics',
-      'Designed AI orchestration with RAG pipelines and multi-provider LLM load balancing, cutting latency 40%',
-      'Led migration to open-source models (DeepSeek GLM), cutting inference costs 60% and eliminating vendor lock-in',
-      'Managed infrastructure with Terraform, Redis, Kafka, Alembic, and Application Insights',
-    ],
-    tags: ['Python', 'FastAPI', 'LLMs', 'Terraform', 'Redis', 'Kafka'],
-  },
-  {
-    title: 'Founder & Software Engineer',
     company: 'PickUp Esports',
+    title: 'Founder & Software Engineer',
     location: 'Waterloo, ON',
-    duration: '2025 - Present',
-    link: null,
-    highlights: [
-      'Building a full-stack esports platform (React/Vite, FastAPI, PostgreSQL) deployed on AWS',
-      'Partnered with the largest gaming cafes in Ontario to host live tournaments and leagues',
-      'Running active paid events with real customers across multiple venues',
-      'Designed relational data models for events, participants, and venues with RESTful booking APIs',
+    duration: '2025 – Present',
+    summary: 'Founded an esports platform partnered with the largest gaming cafes in Ontario. Running live tournaments and leagues with active paying customers.',
+    cards: [
+      { title: 'Ontario Partnerships', detail: 'Signed partnerships with largest gaming cafes across Ontario for venue hosting' },
+      { title: 'Live Events', detail: 'Running active paid tournaments and leagues with real customers across multiple venues' },
+      { title: 'Full Stack Platform', detail: 'React/Vite frontend, FastAPI backend, PostgreSQL with Alembic, deployed on AWS' },
     ],
     tags: ['React', 'FastAPI', 'PostgreSQL', 'AWS', 'Python'],
   },
   {
-    title: 'Backend Developer Intern',
-    company: 'CrackInterview',
-    location: 'Toronto, ON',
-    duration: 'Jul 2024 - Oct 2024',
-    link: 'https://crackinterview.ai/',
-    highlights: [
-      'Trained and deployed an AI chatbot (DialoGPT, PyTorch) boosting Tier-1 support throughput 30% with 95% accuracy',
-      'Built real-time peer-to-peer chat with WebSockets and asyncio, supporting 500+ concurrent users',
-      'Integrated video conferencing (WebRTC, SocketIO, PeerJS, TURN) on AWS, increasing engagement 25%',
+    company: 'Kindr',
+    title: 'Founding Software Engineer',
+    location: 'Calgary, AB (Remote)',
+    duration: 'Apr 2025 – Jun 2026',
+    summary: 'Founding engineer on a healthcare AI platform serving 52+ dental clinics. Owned end-to-end system architecture — from event-driven data pipelines to LLM infrastructure, database optimization, and platform tooling — with minimal guidance.',
+    cards: [
+      { title: 'Event-Driven Architecture', detail: 'Built ETL pipelines and an Apache Kafka event bus over Redis and PostgreSQL, decoupling services and significantly reducing database load under production traffic' },
+      { title: 'System Design', detail: 'Gathered requirements directly from stakeholders, designed multi-service architecture, and delivered full solutions independently — no playbook, built from scratch' },
+      { title: 'Database Optimization', detail: '45% query time reduction via indexing, query planning, and offloading hot reads to Redis; Alembic-versioned schema with zero-downtime migrations' },
+      { title: 'LLM Infrastructure', detail: '40% latency drop via multi-provider load balancing across LLM APIs with RAG pipelines; 60% cost cut by migrating to open-source models (DeepSeek GLM)' },
+      { title: 'Notification System', detail: 'No-code tool for the marketing team to design and automate platform-wide alerts without engineering involvement' },
+      { title: 'Email Delivery Platform', detail: 'Drag-and-drop email builder for internal use, cutting third-party email costs and improving delivery reliability and design consistency' },
     ],
-    tags: ['PyTorch', 'WebSockets', 'AWS', 'WebRTC'],
+    tags: ['FastAPI', 'PostgreSQL', 'Kafka', 'Redis', 'Terraform', 'LLMs', 'RAG', 'Alembic'],
   },
   {
+    company: 'CrackInterview',
+    title: 'Backend Developer Intern',
+    location: 'Toronto, ON',
+    duration: 'Jul 2024 – Oct 2024',
+    link: 'https://crackinterview.ai/',
+    summary: 'Built AI-powered support tooling and real-time communication infrastructure for an interview prep platform serving hundreds of concurrent users.',
+    cards: [
+      { title: 'AI Chatbot', detail: 'DialoGPT/PyTorch chatbot boosting Tier-1 support throughput 30% at 95% accuracy' },
+      { title: '500+ Concurrent Users', detail: 'Real-time peer-to-peer chat via WebSockets and asyncio' },
+      { title: 'Video Conferencing', detail: 'WebRTC + SocketIO + PeerJS + TURN servers on AWS, +25% engagement' },
+    ],
+    tags: ['PyTorch', 'WebSockets', 'WebRTC', 'AWS', 'FastAPI'],
+  },
+  {
+    company: 'Genesis GenAI',
     title: 'GenAI Mentor',
-    company: 'Genesis GenAI Hackathon',
     location: 'Toronto, ON',
     duration: 'Mar 2024',
-    link: null,
-    highlights: [
-      'Selected among top 1.25% of applicants — 15 chosen out of 1,200+ — and recognized as "Best Mentor"',
-      'Mentored 300+ students across API integration, debugging, prompt engineering, and ML techniques',
-      'Guided teams building AI-powered products under 24-hour hackathon conditions',
+    summary: 'Selected among top 1.25% of 1,200+ applicants to mentor 300+ students at Canada\'s largest GenAI hackathon. Awarded "Best Mentor" for exceptional guidance.',
+    cards: [
+      { title: 'Top 1.25%', detail: '15 chosen out of 1,200+ applicants — recognized as "Best Mentor"' },
+      { title: '300+ Students', detail: 'Mentored across API integration, debugging, prompt engineering, and ML techniques' },
+      { title: '24h Hackathon', detail: 'Guided teams from idea to working AI product under competition conditions' },
     ],
     tags: ['LLMs', 'Mentorship', 'AI/ML', 'Python'],
   },
   {
-    title: 'Junior Full Stack Developer',
-    company: 'Replic',
+    company: 'Waterloo Rocketry',
+    title: 'Propulsion Engineer',
     location: 'Waterloo, ON',
-    duration: 'Jul 2021 - May 2022',
-    link: null,
-    highlights: [
-      'Delivered features in ASP.NET MVC/Core with C# and SQL Server (AWS RDS)',
-      'Optimized API performance by 20%; added unit testing and CI/CD, cutting bugs 30%',
+    duration: 'Jun 2023 – 2024',
+    summary: "Contributed to Canada's first amateur liquid rocket launch, reaching ~1.2 km apogee. Directed inter-tank coupler design, nozzle machining, and static fire tests ahead of LC competition.",
+    cards: [
+      { title: 'Historic Launch', detail: "Part of the team that achieved Canada's first amateur liquid rocket launch" },
+      { title: 'Structural Design', detail: 'Stress analysis and CAD modeling of inter-tank coupler connecting rocket stages' },
+      { title: 'Nozzle Machining', detail: 'Oversaw nozzle machining, cold flow tests, and weekly static fire coordination' },
+    ],
+    tags: ['SolidWorks', 'CAD', 'Propulsion', 'Stress Analysis'],
+  },
+  {
+    company: 'Replic',
+    title: 'Junior Full Stack Developer',
+    location: 'Waterloo, ON',
+    duration: 'Jul 2021 – May 2022',
+    summary: 'Delivered full-stack features for an ASP.NET MVC web application, improving API performance and establishing automated testing and CI/CD pipelines.',
+    cards: [
+      { title: '20% Perf Boost', detail: 'Optimized backend controller logic in ASP.NET MVC/Core with C# and SQL Server' },
+      { title: 'CI/CD Pipeline', detail: 'Added automated testing and CI/CD, cutting bugs by 30%' },
     ],
     tags: ['C#', 'ASP.NET', 'SQL Server', 'AWS RDS'],
   },
   {
-    title: 'Jr. Software Engineer, BI',
     company: 'Trillium Health Partners',
+    title: 'Jr. Software Engineer, BI',
     location: 'Mississauga, ON',
-    duration: 'Aug 2019 - Feb 2020',
-    link: null,
-    highlights: [
-      'Built Priority Tracking Tool for 1.75M+ annual patient visits, improving efficiency 35%',
-      'Developed dashboards using SQL, Oracle, and .NET for clinical reporting',
+    duration: 'Aug 2019 – Feb 2020',
+    summary: 'Built enterprise tools and dashboards for a major hospital network serving 1.75M+ annual patient visits, improving clinical efficiency and reporting.',
+    cards: [
+      { title: '35% Efficiency Gain', detail: 'Priority Tracking Tool for 1.75M+ annual patient visits across THP hospitals in the GTA' },
+      { title: 'Clinical Dashboards', detail: 'Interactive dashboards using SQL, Oracle, and .NET with continued daily usage' },
     ],
-    tags: ['SQL', 'Oracle', '.NET', 'ETL'],
+    tags: ['SQL', 'Oracle', '.NET', 'ASP.NET', 'C#'],
   },
 ];
 
 const Experience: React.FC = () => {
   return (
-    <motion.section
-      initial={{ opacity: 0, y: 40 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: '-100px' }}
-      transition={{ duration: 0.7 }}
-      className="glass-dark rounded-2xl p-8 mb-8"
-    >
-      <h2 className="section-heading gradient-text mb-8">Experience</h2>
+    <section className="pb-16 overflow-x-clip">
+      {/* Section header */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: false }}
+        transition={{ duration: 0.6 }}
+        className="text-center pt-16 pb-20"
+      >
+        <p className="font-mono text-xs tracking-[0.28em] text-accent uppercase mb-3">Experience</p>
+        <h2 className="text-4xl lg:text-5xl font-bold text-white">A Timeline of My Work</h2>
+      </motion.div>
 
-      <div className="relative">
-        {/* Timeline line */}
-        <div className="absolute left-[11px] top-2 bottom-2 w-px bg-gradient-to-b from-accent via-blue-500/50 to-transparent" />
+      {/* Entries */}
+      <div className="max-w-6xl mx-auto px-6 lg:px-10">
+        {experiences.map((exp, index) => (
+          <motion.div
+            key={exp.company}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: false, margin: '-60px' }}
+            transition={{ duration: 0.6, delay: 0.05 }}
+            className="flex flex-col lg:flex-row justify-start pt-16 lg:pt-28 gap-8 lg:gap-16 first:pt-0"
+          >
+            {/* Left — sticky company name */}
+            <div className="lg:sticky lg:top-36 self-start lg:basis-[28%] shrink-0">
+              <div className="flex items-center gap-3 lg:block">
+                <div className="w-10 h-10 rounded-xl bg-white/[0.06] border border-white/10 flex items-center justify-center shrink-0">
+                  <span className="text-white font-bold text-sm">{exp.company.charAt(0)}</span>
+                </div>
+                <h3 className="text-2xl lg:text-3xl font-semibold text-white lg:mt-4 leading-tight">
+                  {exp.company}
+                </h3>
+              </div>
+            </div>
 
-        <div className="space-y-8">
-          {experiences.map((exp, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.1, duration: 0.5 }}
-              className="relative pl-10"
-            >
-              {/* Timeline dot */}
-              <div className="absolute left-0 top-1.5 w-[23px] h-[23px] rounded-full bg-gray-950 border-2 border-accent flex items-center justify-center">
-                <div className="w-2 h-2 rounded-full bg-accent-light" />
+            {/* Right — content */}
+            <div className="flex-1 min-w-0">
+              {/* Role row */}
+              <div className="flex flex-wrap items-start justify-between gap-2 mb-5">
+                <div>
+                  <h4 className="text-xl font-semibold text-white">{exp.title}</h4>
+                  <p className="text-white/60 text-sm mt-0.5">
+                    {exp.location}
+                    {exp.link && (
+                      <a
+                        href={exp.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1 ml-2 text-accent-light hover:text-accent transition-colors"
+                      >
+                        <ExternalLink size={11} />
+                      </a>
+                    )}
+                    {' '}· {exp.duration}
+                  </p>
+                </div>
               </div>
 
-              <div className="p-5 rounded-xl bg-white/[0.03] border border-white/5 hover:border-accent/20 transition-all duration-300">
-                <div className="flex flex-wrap items-start justify-between gap-2 mb-2">
-                  <div>
-                    <h3 className="text-lg font-semibold text-white">{exp.title}</h3>
-                    <p className="text-accent-light flex items-center gap-1.5 text-sm">
-                      <Building2 size={14} />
-                      {exp.link ? (
-                        <a
-                          href={exp.link}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="hover:text-accent transition-colors inline-flex items-center gap-1"
-                        >
-                          {exp.company}
-                          <ExternalLink size={11} />
-                        </a>
-                      ) : (
-                        exp.company
-                      )}
-                      , {exp.location}
-                    </p>
+              {/* Summary card */}
+              <div className="rounded-2xl bg-white/[0.07] border border-white/12 p-5 flex gap-4 mb-4">
+                <div className="p-2 rounded-xl bg-accent/15 text-accent-light shrink-0 h-fit">
+                  <Sparkles size={18} />
+                </div>
+                <p className="text-white text-sm leading-relaxed">{exp.summary}</p>
+              </div>
+
+              {/* Highlight cards */}
+              <div className={`grid gap-3 ${exp.cards.length === 2 ? 'grid-cols-1 sm:grid-cols-2' : 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3'}`}>
+                {exp.cards.map((card) => (
+                  <div
+                    key={card.title}
+                    className="rounded-2xl bg-white/[0.06] border border-white/10 p-4 hover:border-accent/30 hover:bg-white/[0.09] transition-all duration-300"
+                  >
+                    <p className="text-white font-semibold text-sm mb-1.5">{card.title}</p>
+                    <p className="text-white/80 text-xs leading-relaxed">{card.detail}</p>
                   </div>
-                  <span className="text-xs text-gray-500 flex items-center gap-1 whitespace-nowrap">
-                    <Calendar size={12} />
-                    {exp.duration}
-                  </span>
-                </div>
-
-                <ul className="space-y-1.5 mb-3">
-                  {exp.highlights.map((h, i) => (
-                    <li key={i} className="text-gray-400 text-sm flex gap-2">
-                      <span className="text-accent-light mt-1.5 shrink-0">▸</span>
-                      {h}
-                    </li>
-                  ))}
-                </ul>
-
-                <div className="flex flex-wrap gap-1.5">
-                  {exp.tags.map((tag) => (
-                    <span key={tag} className="chip !text-[10px] !px-2 !py-0.5">{tag}</span>
-                  ))}
-                </div>
+                ))}
               </div>
-            </motion.div>
-          ))}
-        </div>
+
+              {/* Tags */}
+              <div className="flex flex-wrap gap-1.5 mt-4">
+                {exp.tags.map((tag) => (
+                  <span key={tag} className="chip !text-[10px] !px-2 !py-0.5">{tag}</span>
+                ))}
+              </div>
+            </div>
+          </motion.div>
+        ))}
       </div>
-    </motion.section>
+    </section>
   );
 };
 

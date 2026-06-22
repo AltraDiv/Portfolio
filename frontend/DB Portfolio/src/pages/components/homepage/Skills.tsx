@@ -32,7 +32,7 @@ const Skills: React.FC = () => {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: false }}
           transition={{ duration: 0.6 }}
           className="mb-16"
         >
@@ -46,7 +46,7 @@ const Skills: React.FC = () => {
               key={cat.label}
               initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: false }}
               transition={{ delay: ci * 0.1, duration: 0.6 }}
             >
               <div className="flex flex-col lg:flex-row lg:items-start gap-6 lg:gap-16">
@@ -63,7 +63,7 @@ const Skills: React.FC = () => {
                       key={item}
                       initial={{ opacity: 0, scale: 0.9 }}
                       whileInView={{ opacity: 1, scale: 1 }}
-                      viewport={{ once: true }}
+                      viewport={{ once: false }}
                       transition={{ delay: ci * 0.05 + ii * 0.04, duration: 0.3 }}
                       className="px-4 py-2 rounded-full border border-white/10 bg-white/[0.03] text-gray-300 text-sm font-mono hover:border-accent/40 hover:text-accent transition-all duration-200 cursor-default"
                     >

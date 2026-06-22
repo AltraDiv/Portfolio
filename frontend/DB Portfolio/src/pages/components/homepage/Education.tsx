@@ -7,7 +7,7 @@ const Education: React.FC = () => {
     <motion.section
       initial={{ opacity: 0, y: 40 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: '-100px' }}
+      viewport={{ once: false, margin: '-100px' }}
       transition={{ duration: 0.7 }}
       className="glass-dark rounded-2xl p-8 mb-8"
     >

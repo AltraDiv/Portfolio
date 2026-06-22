@@ -2,7 +2,6 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { ArrowDown, Download } from 'lucide-react';
 import { GitHubIcon, LinkedInIcon } from '../../../components/icons';
-import GradientBackground from '../../../components/GradientBackground';
 import { Tooltip } from '../../../components/Tooltip';
 import ProfilePicture from '../../../assets/ProfilePicture2.png';
 import pdfFile from '../../../assets/Divjot_Bhogal_2026.pdf';
@@ -16,9 +15,6 @@ const fade = (delay: number) => ({
 const Intro: React.FC = () => {
   return (
     <section className="relative h-screen overflow-hidden flex items-center">
-
-      {/* Animated gradient background */}
-      <GradientBackground />
 
       {/* Photo, transparent PNG floating on the animated background */}
       <div className="hidden lg:flex absolute right-0 bottom-0 h-[88%] w-[46%] pointer-events-none select-none items-end justify-end">
