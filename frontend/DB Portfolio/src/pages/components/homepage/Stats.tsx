@@ -4,8 +4,9 @@ import { motion } from 'framer-motion';
 const stats = [
   { value: '10+', label: 'Projects shipped' },
   { value: '3', label: 'Startups built for' },
-  { value: '4+', label: 'Years of experience' },
-  { value: 'B.Math', label: 'University of Waterloo' },
+  { value: '16+', label: 'Months of internships' },
+  { value: '1+', label: 'Year in industry' },
+  { value: 'B.Math', label: 'Computational Mathematics, Waterloo' },
 ];
 
 const Stats: React.FC = () => {
@@ -14,7 +15,7 @@ const Stats: React.FC = () => {
       <div className="max-w-7xl mx-auto px-8 lg:px-16">
 
         {/* Metrics row */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-12 mb-20">
+        <div className="grid grid-cols-2 lg:grid-cols-5 gap-12 mb-20">
           {stats.map((s, i) => (
             <motion.div
               key={s.label}
@@ -45,11 +46,13 @@ const Stats: React.FC = () => {
           transition={{ duration: 0.8 }}
           className="text-center text-2xl lg:text-3xl text-gray-300 font-light leading-relaxed max-w-4xl mx-auto"
         >
-          I'm a backend engineer with a math background, I care about{' '}
+          Backend engineer with a math background. Over a year in industry plus 16+ months
+          of internships, I build{' '}
           <span className="text-white font-medium">systems that scale</span>,{' '}
           <span className="text-white font-medium">AI that ships</span>, and{' '}
-          <span className="text-white font-medium">infrastructure that doesn't break at 3am</span>.
-          Currently building my own local AI inference server, think Jarvis, but actually mine.
+          <span className="text-white font-medium">products with real customers</span>.
+          Currently founding PickUp Esports, partnered with the largest gaming cafes in Ontario,
+          running live tournaments and leagues with active paying players.
         </motion.p>
 
       </div>

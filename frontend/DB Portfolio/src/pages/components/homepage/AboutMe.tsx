@@ -1,14 +1,14 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Download, FolderOpen, Briefcase, Code2, Rocket } from 'lucide-react';
+import { Download, FolderOpen, Briefcase, Code2, Trophy } from 'lucide-react';
 import pdfFile from '../../../assets/Divjot_Bhogal_2026.pdf';
 
 const stats = [
   { icon: Code2, value: '10+', label: 'Projects' },
-  { icon: Briefcase, value: '3+', label: 'Years Experience' },
-  { icon: Rocket, value: '52+', label: 'Clinics Served' },
+  { icon: Briefcase, value: '1+', label: 'Yr in Industry' },
+  { icon: Trophy, value: '3', label: 'Startups' },
 ];
-// hi
+
 const AboutMe: React.FC = () => {
   return (
     <motion.section
@@ -23,10 +23,10 @@ const AboutMe: React.FC = () => {
         Hi, I'm Divjot Bhogal, a Software Engineer with a B.Math in Computational Mathematics
         (Minor in Computing) from the University of Waterloo. I specialize in building scalable
         backend systems, AI-powered products, and real-time infrastructure. Most recently, I was
-        a Founding Software Engineer at Kindr, where I built healthcare AI agents serving 2,200+
-        calls/mo across 52+ clinics. Outside of work, I'm building my own local AI inference
-        server, a home Jarvis that runs open-source models privately on my own hardware. I'm
-        passionate about large-scale systems, AI/ML integration, and shipping things that matter.
+        a Founding Software Engineer at Kindr, building healthcare AI agents serving 2,200+
+        calls/mo across 52+ clinics. I'm also founding PickUp Esports, partnered with the largest
+        gaming cafes in Ontario, where I run live tournaments and leagues with active paying customers.
+        I care about shipping real products, not just writing code.
       </p>
 
       {/* Stats */}

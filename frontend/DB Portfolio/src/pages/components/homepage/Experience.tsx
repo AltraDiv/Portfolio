@@ -1,41 +1,84 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Building2, Calendar } from 'lucide-react';
+import { Building2, Calendar, ExternalLink } from 'lucide-react';
 
 const experiences = [
+  {
+    title: 'Propulsion Engineer',
+    company: 'Waterloo Rocketry Design Team',
+    location: 'Waterloo, ON',
+    duration: 'Jun 2023 - Present',
+    link: null,
+    highlights: [
+      "Contributed to Canada's first amateur liquid rocket launch, achieving a ~1.2 km apogee",
+      'Directed design and stress analysis of the inter-tank coupler assembly connecting rocket stages; coordinated CAD modeling and machining to ensure structural integrity during launch',
+      'Created detailed SolidWorks CAD models; oversaw nozzle machining operations and facilitated cold flow and static fire tests through weekly team coordination ahead of LC competition',
+    ],
+    tags: ['SolidWorks', 'CAD', 'Propulsion', 'Stress Analysis', 'Static Fire'],
+  },
   {
     title: 'Founding Software Engineer',
     company: 'Kindr',
     location: 'Calgary, AB (Remote)',
-    duration: 'Apr 2025 - Apr 2026',
+    duration: 'Apr 2025 - Jun 2026',
+    link: null,
     highlights: [
       'Built healthcare AI agents (Ultravox, LiveKit, Rime TTS) serving 2,200+ calls/mo across 52+ clinics',
-      'Designed AI orchestration with RAG pipelines and multi-provider LLM load balancing',
-      'Built versioned FastAPI microservices with auth, validation, and zero-downtime releases',
-      'Managed infrastructure with Terraform, Redis, Kafka, and Application Insights',
+      'Designed AI orchestration with RAG pipelines and multi-provider LLM load balancing, cutting latency 40%',
+      'Led migration to open-source models (DeepSeek GLM), cutting inference costs 60% and eliminating vendor lock-in',
+      'Managed infrastructure with Terraform, Redis, Kafka, Alembic, and Application Insights',
     ],
     tags: ['Python', 'FastAPI', 'LLMs', 'Terraform', 'Redis', 'Kafka'],
   },
   {
+    title: 'Founder & Software Engineer',
+    company: 'PickUp Esports',
+    location: 'Waterloo, ON',
+    duration: '2025 - Present',
+    link: null,
+    highlights: [
+      'Building a full-stack esports platform (React/Vite, FastAPI, PostgreSQL) deployed on AWS',
+      'Partnered with the largest gaming cafes in Ontario to host live tournaments and leagues',
+      'Running active paid events with real customers across multiple venues',
+      'Designed relational data models for events, participants, and venues with RESTful booking APIs',
+    ],
+    tags: ['React', 'FastAPI', 'PostgreSQL', 'AWS', 'Python'],
+  },
+  {
     title: 'Backend Developer Intern',
     company: 'CrackInterview',
-    location: 'Mississauga, ON',
+    location: 'Toronto, ON',
     duration: 'Jul 2024 - Oct 2024',
+    link: 'https://crackinterview.ai/',
     highlights: [
-      'Built AI chatbot (DialoGPT, PyTorch) boosting Tier-1 support throughput 30%',
-      'Built real-time messaging with WebSockets and asyncio',
-      'Integrated video conferencing via WebRTC with secure AWS deployment',
+      'Trained and deployed an AI chatbot (DialoGPT, PyTorch) boosting Tier-1 support throughput 30% with 95% accuracy',
+      'Built real-time peer-to-peer chat with WebSockets and asyncio, supporting 500+ concurrent users',
+      'Integrated video conferencing (WebRTC, SocketIO, PeerJS, TURN) on AWS, increasing engagement 25%',
     ],
     tags: ['PyTorch', 'WebSockets', 'AWS', 'WebRTC'],
+  },
+  {
+    title: 'GenAI Mentor',
+    company: 'Genesis GenAI Hackathon',
+    location: 'Toronto, ON',
+    duration: 'Mar 2024',
+    link: null,
+    highlights: [
+      'Selected among top 1.25% of applicants — 15 chosen out of 1,200+ — and recognized as "Best Mentor"',
+      'Mentored 300+ students across API integration, debugging, prompt engineering, and ML techniques',
+      'Guided teams building AI-powered products under 24-hour hackathon conditions',
+    ],
+    tags: ['LLMs', 'Mentorship', 'AI/ML', 'Python'],
   },
   {
     title: 'Junior Full Stack Developer',
     company: 'Replic',
     location: 'Waterloo, ON',
     duration: 'Jul 2021 - May 2022',
+    link: null,
     highlights: [
       'Delivered features in ASP.NET MVC/Core with C# and SQL Server (AWS RDS)',
-      'Optimized API performance by 20%; added unit testing and CI/CD',
+      'Optimized API performance by 20%; added unit testing and CI/CD, cutting bugs 30%',
     ],
     tags: ['C#', 'ASP.NET', 'SQL Server', 'AWS RDS'],
   },
@@ -44,6 +87,7 @@ const experiences = [
     company: 'Trillium Health Partners',
     location: 'Mississauga, ON',
     duration: 'Aug 2019 - Feb 2020',
+    link: null,
     highlights: [
       'Built Priority Tracking Tool for 1.75M+ annual patient visits, improving efficiency 35%',
       'Developed dashboards using SQL, Oracle, and .NET for clinical reporting',
@@ -88,7 +132,20 @@ const Experience: React.FC = () => {
                     <h3 className="text-lg font-semibold text-white">{exp.title}</h3>
                     <p className="text-accent-light flex items-center gap-1.5 text-sm">
                       <Building2 size={14} />
-                      {exp.company}, {exp.location}
+                      {exp.link ? (
+                        <a
+                          href={exp.link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="hover:text-accent transition-colors inline-flex items-center gap-1"
+                        >
+                          {exp.company}
+                          <ExternalLink size={11} />
+                        </a>
+                      ) : (
+                        exp.company
+                      )}
+                      , {exp.location}
                     </p>
                   </div>
                   <span className="text-xs text-gray-500 flex items-center gap-1 whitespace-nowrap">

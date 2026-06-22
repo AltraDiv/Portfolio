@@ -2,6 +2,8 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { ArrowDown, Download } from 'lucide-react';
 import { GitHubIcon, LinkedInIcon } from '../../../components/icons';
+import GradientBackground from '../../../components/GradientBackground';
+import { Tooltip } from '../../../components/Tooltip';
 import ProfilePicture from '../../../assets/ProfilePicture2.png';
 import pdfFile from '../../../assets/Divjot_Bhogal_2026.pdf';
 
@@ -15,30 +17,34 @@ const Intro: React.FC = () => {
   return (
     <section className="relative h-screen overflow-hidden flex items-center">
 
-      {/* Subtle warm glow behind photo */}
-      <div className="absolute right-0 top-0 h-full w-1/2 pointer-events-none">
-        <div className="absolute inset-0 bg-gradient-to-l from-blue-500/10 via-transparent to-transparent" />
-      </div>
+      {/* Animated gradient background */}
+      <GradientBackground />
 
-      {/* Photo , natural size, anchored to bottom-right */}
-      <div className="hidden lg:flex absolute right-0 bottom-0 h-[85%] w-[45%] pointer-events-none select-none items-end justify-end">
+      {/* Photo, transparent PNG floating on the animated background */}
+      <div className="hidden lg:flex absolute right-0 bottom-0 h-[88%] w-[46%] pointer-events-none select-none items-end justify-end">
+        {/* Soft halo behind the subject */}
+        <div
+          className="absolute bottom-0 right-[6%] w-[70%] h-[80%] rounded-full"
+          style={{
+            background: 'radial-gradient(circle, rgba(59,130,246,0.18) 0%, transparent 65%)',
+            filter: 'blur(40px)',
+          }}
+        />
         <img
           src={ProfilePicture}
           alt="Divjot Bhogal"
-          className="h-full w-auto object-contain object-bottom"
+          className="relative h-full w-auto object-contain object-bottom drop-shadow-2xl"
         />
-        {/* Left edge blend */}
-        <div className="absolute inset-y-0 left-0 w-40 bg-gradient-to-r from-gray-950 to-transparent" />
-        {/* Bottom fade */}
-        <div className="absolute bottom-0 left-0 right-0 h-28 bg-gradient-to-t from-gray-950 to-transparent" />
+        {/* Gentle ground fade so the figure grounds into the page */}
+        <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-gray-950/80 to-transparent" />
       </div>
 
       {/* Left content */}
-      <div className="relative z-10 w-full max-w-7xl mx-auto px-8 lg:px-16 pt-24">
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-8 lg:px-16 pt-20 pb-8">
         <div className="max-w-full lg:max-w-[56%]">
 
           {/* Label */}
-          <motion.div {...fade(0.1)} className="flex items-center gap-3 mb-8">
+          <motion.div {...fade(0.1)} className="flex items-center gap-3 mb-5">
             <div className="w-2 h-2 rounded-full bg-accent animate-pulse" />
             <span className="font-mono text-xs tracking-[0.3em] text-gray-400 uppercase">
               Software Engineer · Toronto, ON
@@ -46,7 +52,7 @@ const Intro: React.FC = () => {
           </motion.div>
 
           {/* Name */}
-          <div className="overflow-hidden mb-1">
+          <div className="mb-1">
             <motion.h1
               initial={{ y: '100%' }}
               animate={{ y: 0 }}
@@ -57,7 +63,7 @@ const Intro: React.FC = () => {
               Divjot
             </motion.h1>
           </div>
-          <div className="overflow-hidden mb-10">
+          <div className="mb-6">
             <motion.h1
               initial={{ y: '100%' }}
               animate={{ y: 0 }}
@@ -72,23 +78,22 @@ const Intro: React.FC = () => {
           {/* Role */}
           <motion.p
             {...fade(0.4)}
-            className="text-xl text-gray-400 font-light mb-6 tracking-wide"
+            className="text-xl text-gray-400 font-light mb-3 tracking-wide"
           >
             Software Engineer
           </motion.p>
 
-
           {/* One-liner */}
           <motion.p
             {...fade(0.5)}
-            className="text-gray-500 text-base leading-relaxed mb-10 max-w-md"
+            className="text-gray-500 text-base leading-relaxed mb-6 max-w-md"
           >
-            I build scalable backend systems and AI-powered products.
-            Previously founding engineer at a healthcare AI startup.
+            I build scalable backend systems and AI-powered products. Founding engineer
+            at Kindr and founder of PickUp Esports, with a B.Math from Waterloo.
           </motion.p>
 
           {/* CTAs */}
-          <motion.div {...fade(0.6)} className="flex items-center gap-4 mb-10 flex-wrap">
+          <motion.div {...fade(0.6)} className="flex items-center gap-4 mb-6 flex-wrap">
             <a href="#work" className="btn-primary">
               <ArrowDown size={16} /> Learn More
             </a>
@@ -105,22 +110,26 @@ const Intro: React.FC = () => {
 
           {/* Socials */}
           <motion.div {...fade(0.7)} className="flex items-center gap-5">
-            <a
-              href="https://www.linkedin.com/in/divjot-bhogal"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-gray-600 hover:text-accent transition-colors duration-200"
-            >
-              <LinkedInIcon size={22} />
-            </a>
-            <a
-              href="https://github.com/AltraDiv"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-gray-600 hover:text-accent transition-colors duration-200"
-            >
-              <GitHubIcon size={22} />
-            </a>
+            <Tooltip content="LinkedIn">
+              <a
+                href="https://www.linkedin.com/in/divjot-bhogal"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gray-600 hover:text-accent transition-colors duration-200"
+              >
+                <LinkedInIcon size={22} />
+              </a>
+            </Tooltip>
+            <Tooltip content="GitHub">
+              <a
+                href="https://github.com/AltraDiv"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gray-600 hover:text-accent transition-colors duration-200"
+              >
+                <GitHubIcon size={22} />
+              </a>
+            </Tooltip>
           </motion.div>
 
         </div>

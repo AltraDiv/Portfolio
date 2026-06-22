@@ -36,8 +36,11 @@ interface Props {
 }
 
 
+const DURATION = 7100;
+
 export const MarvelIntro: React.FC<Props> = ({ onComplete }) => {
   const [frame, setFrame] = useState(0);
+  const [progress, setProgress] = useState(0);
   const frameRef = useRef(0);
 
   // Recursive image flipper
@@ -54,8 +57,21 @@ export const MarvelIntro: React.FC<Props> = ({ onComplete }) => {
     return () => clearTimeout(tid);
   }, []);
 
+  // Smooth progress counter 0 → 100 over DURATION ms
   useEffect(() => {
-    const t = setTimeout(() => onComplete(), 7100);
+    const start = performance.now();
+    let raf: number;
+    const tick = (now: number) => {
+      const pct = Math.min(100, Math.floor(((now - start) / DURATION) * 100));
+      setProgress(pct);
+      if (pct < 100) raf = requestAnimationFrame(tick);
+    };
+    raf = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(raf);
+  }, []);
+
+  useEffect(() => {
+    const t = setTimeout(() => onComplete(), DURATION);
     return () => clearTimeout(t);
   }, [onComplete]);
 
@@ -154,17 +170,42 @@ export const MarvelIntro: React.FC<Props> = ({ onComplete }) => {
       />
 
 
-      {/* Bottom left , tiny "skip" affordance */}
-      <motion.button
+      {/* Loading bar + percentage */}
+      <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 1.5 }}
-        onClick={onComplete}
-        className="absolute bottom-3 right-4 text-white/30 text-xs tracking-widest uppercase hover:text-white/60 transition-colors"
-        style={{ fontFamily: 'Arial, sans-serif', letterSpacing: '0.25em' }}
+        transition={{ delay: 0.6 }}
+        className="absolute bottom-0 left-0 right-0 px-6 pb-6 flex items-end justify-between gap-4"
       >
-        skip
-      </motion.button>
+        {/* Bar */}
+        <div className="flex-1 h-[2px] bg-white/10 rounded-full overflow-hidden">
+          <div
+            className="h-full rounded-full"
+            style={{
+              width: `${progress}%`,
+              background: 'linear-gradient(90deg, #3b82f6, #60a5fa)',
+              transition: 'width 80ms linear',
+            }}
+          />
+        </div>
+
+        {/* Percentage */}
+        <span
+          className="text-white/40 text-xs font-mono tabular-nums shrink-0"
+          style={{ letterSpacing: '0.1em', minWidth: '2.8rem', textAlign: 'right' }}
+        >
+          {progress}%
+        </span>
+
+        {/* Skip */}
+        <button
+          onClick={onComplete}
+          className="text-white/25 text-xs tracking-widest uppercase hover:text-white/50 transition-colors shrink-0"
+          style={{ fontFamily: 'Arial, sans-serif', letterSpacing: '0.25em' }}
+        >
+          skip
+        </button>
+      </motion.div>
     </motion.div>
   );
 };

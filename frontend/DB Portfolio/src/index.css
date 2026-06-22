@@ -64,3 +64,34 @@
   .stagger-4 { animation-delay: 0.4s; }
   .stagger-5 { animation-delay: 0.5s; }
 }
+
+/* Liquid gradient background , orbiting + drifting blobs */
+@keyframes blobMoveVertical {
+  0%   { transform: translateY(-22%); }
+  50%  { transform: translateY(22%); }
+  100% { transform: translateY(-22%); }
+}
+@keyframes blobMoveHorizontal {
+  0%   { transform: translateX(-26%) translateY(-8%); }
+  50%  { transform: translateX(26%) translateY(8%); }
+  100% { transform: translateX(-26%) translateY(-8%); }
+}
+@keyframes blobOrbit {
+  0%   { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+@keyframes blobOrbitRev {
+  0%   { transform: rotate(0deg); }
+  100% { transform: rotate(-360deg); }
+}
+
+.blob-vertical    { animation: blobMoveVertical 14s ease-in-out infinite; }
+.blob-horizontal  { animation: blobMoveHorizontal 18s ease-in-out infinite; }
+.blob-circle      { animation: blobOrbit 26s linear infinite; }
+.blob-circle-rev  { animation: blobOrbitRev 22s linear infinite; }
+.blob-circle-slow { animation: blobOrbit 40s linear infinite; }
+
+@media (prefers-reduced-motion: reduce) {
+  .blob-vertical, .blob-horizontal, .blob-circle,
+  .blob-circle-rev, .blob-circle-slow { animation: none; }
+}

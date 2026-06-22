@@ -21,8 +21,17 @@ export default {
         'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
         'float': 'float 6s ease-in-out infinite',
         'gradient': 'gradient 8s ease infinite',
+        'blob': 'blob 9s ease-in-out infinite',
+        'blob-slow': 'blob 13s ease-in-out infinite',
+        'blob-slower': 'blob 17s ease-in-out infinite',
       },
       keyframes: {
+        blob: {
+          '0%, 100%': { transform: 'translate(0px, 0px) scale(1)', borderRadius: '60% 40% 55% 45% / 55% 45% 60% 40%' },
+          '25%': { transform: 'translate(25px, -40px) scale(1.07)', borderRadius: '45% 55% 40% 60% / 60% 40% 55% 45%' },
+          '50%': { transform: 'translate(-18px, 25px) scale(0.94)', borderRadius: '55% 45% 65% 35% / 40% 60% 45% 55%' },
+          '75%': { transform: 'translate(12px, -15px) scale(1.03)', borderRadius: '40% 60% 50% 50% / 55% 35% 65% 45%' },
+        },
         fadeIn: {
           '0%': { opacity: '0' },
           '100%': { opacity: '1' },
