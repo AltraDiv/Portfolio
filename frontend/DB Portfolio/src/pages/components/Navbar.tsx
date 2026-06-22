@@ -27,9 +27,8 @@ const Navbar: React.FC = () => {
       }`}
     >
       <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
-        <a href="/" className="text-xl font-bold tracking-tight">
-          <span className="gradient-text">DB</span>
-          <span className="text-white ml-1">Portfolio</span>
+        <a href="/" className="text-xl font-extralight tracking-widest text-white uppercase">
+          DB <span className="text-accent">Portfolio</span>
         </a>
 
         {/* Desktop */}
@@ -41,7 +40,7 @@ const Navbar: React.FC = () => {
                 className="relative px-4 py-2 text-sm font-medium text-gray-400 transition-colors hover:text-white group"
               >
                 {link.name}
-                <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-gradient-to-r from-accent to-purple-500 transition-all duration-300 group-hover:w-3/4 rounded-full" />
+                <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-gradient-to-r from-accent to-blue-600 transition-all duration-300 group-hover:w-3/4 rounded-full" />
               </a>
             </li>
           ))}

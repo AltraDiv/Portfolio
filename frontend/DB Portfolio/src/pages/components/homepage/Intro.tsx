@@ -1,158 +1,131 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
-import { MapPin, ArrowDown } from 'lucide-react';
+import { ArrowDown, Download } from 'lucide-react';
 import { GitHubIcon, LinkedInIcon } from '../../../components/icons';
-import ProfilePicture from '../../../assets/ProfilePicture.jpg';
+import ProfilePicture from '../../../assets/ProfilePicture2.png';
+import pdfFile from '../../../assets/Divjot_Bhogal_2026.pdf';
 
-const roles = ['Software Engineer', 'AI/ML Builder', 'Backend Architect', 'Startup Founder'];
+const fade = (delay: number) => ({
+  initial: { opacity: 0, y: 24 },
+  animate: { opacity: 1, y: 0 },
+  transition: { delay, duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] as const },
+});
 
 const Intro: React.FC = () => {
-  const [roleIndex, setRoleIndex] = useState(0);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setRoleIndex((prev) => (prev + 1) % roles.length);
-    }, 2500);
-    return () => clearInterval(interval);
-  }, []);
-
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Ambient background */}
-      <div className="absolute inset-0">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-accent/10 rounded-full blur-3xl animate-pulse-slow" />
-        <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-purple-500/10 rounded-full blur-3xl animate-pulse-slow" style={{ animationDelay: '2s' }} />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-pink-500/5 rounded-full blur-3xl" />
+    <section className="relative h-screen overflow-hidden flex items-center">
+
+      {/* Subtle warm glow behind photo */}
+      <div className="absolute right-0 top-0 h-full w-1/2 pointer-events-none">
+        <div className="absolute inset-0 bg-gradient-to-l from-blue-500/10 via-transparent to-transparent" />
       </div>
 
-      <div className="relative z-10 max-w-4xl mx-auto px-6 text-center pt-24">
-        {/* Profile picture */}
-        <motion.div
-          initial={{ scale: 0, opacity: 0 }}
-          animate={{ scale: 1, opacity: 1 }}
-          transition={{ type: 'spring', stiffness: 200, damping: 20, delay: 0.2 }}
-          className="relative inline-block mb-8"
-        >
-          <div className="w-28 h-28 rounded-full p-[2px] bg-gradient-to-r from-accent via-purple-500 to-pink-500 animate-float">
-            <img
-              src={ProfilePicture}
-              alt="Divjot Bhogal"
-              className="w-full h-full rounded-full object-cover border-2 border-gray-950"
-            />
+      {/* Photo , natural size, anchored to bottom-right */}
+      <div className="hidden lg:flex absolute right-0 bottom-0 h-[85%] w-[45%] pointer-events-none select-none items-end justify-end">
+        <img
+          src={ProfilePicture}
+          alt="Divjot Bhogal"
+          className="h-full w-auto object-contain object-bottom"
+        />
+        {/* Left edge blend */}
+        <div className="absolute inset-y-0 left-0 w-40 bg-gradient-to-r from-gray-950 to-transparent" />
+        {/* Bottom fade */}
+        <div className="absolute bottom-0 left-0 right-0 h-28 bg-gradient-to-t from-gray-950 to-transparent" />
+      </div>
+
+      {/* Left content */}
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-8 lg:px-16 pt-24">
+        <div className="max-w-full lg:max-w-[56%]">
+
+          {/* Label */}
+          <motion.div {...fade(0.1)} className="flex items-center gap-3 mb-8">
+            <div className="w-2 h-2 rounded-full bg-accent animate-pulse" />
+            <span className="font-mono text-xs tracking-[0.3em] text-gray-400 uppercase">
+              Software Engineer · Toronto, ON
+            </span>
+          </motion.div>
+
+          {/* Name */}
+          <div className="overflow-hidden mb-1">
+            <motion.h1
+              initial={{ y: '100%' }}
+              animate={{ y: 0 }}
+              transition={{ delay: 0.15, duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
+              className="text-white leading-none font-extralight"
+              style={{ fontSize: 'clamp(2.8rem, 12vw, 8.5rem)', letterSpacing: '0.01em' }}
+            >
+              Divjot
+            </motion.h1>
           </div>
-          <div className="absolute -bottom-1 -right-1 w-6 h-6 bg-green-500 rounded-full border-2 border-gray-950" />
-        </motion.div>
+          <div className="overflow-hidden mb-10">
+            <motion.h1
+              initial={{ y: '100%' }}
+              animate={{ y: 0 }}
+              transition={{ delay: 0.27, duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
+              className="text-white leading-none font-extralight"
+              style={{ fontSize: 'clamp(2.8rem, 12vw, 8.5rem)', letterSpacing: '0.01em' }}
+            >
+              Bhogal
+            </motion.h1>
+          </div>
 
-        {/* Chip */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.4 }}
-          className="mb-6"
-        >
-          <span className="chip">
-            <MapPin size={12} className="mr-1" /> Toronto, ON, Canada
-          </span>
-        </motion.div>
-
-        {/* Name */}
-        <motion.h1
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.5, duration: 0.8 }}
-          className="text-5xl sm:text-7xl font-bold tracking-tight mb-4"
-        >
-          Divjot{' '}
-          <span className="gradient-text">Bhogal</span>
-        </motion.h1>
-
-        {/* Rotating role */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.7 }}
-          className="h-10 mb-6 overflow-hidden"
-        >
+          {/* Role */}
           <motion.p
-            key={roleIndex}
-            initial={{ y: 30, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            exit={{ y: -30, opacity: 0 }}
-            transition={{ duration: 0.4 }}
-            className="text-xl sm:text-2xl text-gray-400 font-medium"
+            {...fade(0.4)}
+            className="text-xl text-gray-400 font-light mb-6 tracking-wide"
           >
-            {roles[roleIndex]}
+            Software Engineer
           </motion.p>
-        </motion.div>
 
-        {/* Bio */}
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.9 }}
-          className="max-w-2xl mx-auto text-gray-500 text-lg leading-relaxed mb-10"
-        >
-          B.Math from University of Waterloo. I build scalable systems, AI-powered products, 
-          and ship fast. Previously founding engineer at a healthcare AI startup serving 52+ clinics.
-        </motion.p>
 
-        {/* CTAs */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1.1 }}
-          className="flex flex-wrap items-center justify-center gap-4 mb-16"
-        >
-          <a href="/about" className="btn-primary">
-            View My Work
-            <ArrowDown size={16} className="animate-bounce" />
-          </a>
-          <a href="/contact" className="btn-outline">
-            Get in Touch
-          </a>
-        </motion.div>
-
-        {/* Social links */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1.3 }}
-          className="flex items-center justify-center gap-4"
-        >
-          <a
-            href="https://www.linkedin.com/in/divjot-bhogal"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="p-3 rounded-xl glass text-gray-400 hover:text-accent-light hover:border-accent/30 transition-all duration-300"
+          {/* One-liner */}
+          <motion.p
+            {...fade(0.5)}
+            className="text-gray-500 text-base leading-relaxed mb-10 max-w-md"
           >
-            <LinkedInIcon size={20} />
-          </a>
-          <a
-            href="https://github.com/AltraDiv"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="p-3 rounded-xl glass text-gray-400 hover:text-accent-light hover:border-accent/30 transition-all duration-300"
-          >
-            <GitHubIcon size={20} />
-          </a>
-        </motion.div>
+            I build scalable backend systems and AI-powered products.
+            Previously founding engineer at a healthcare AI startup.
+          </motion.p>
+
+          {/* CTAs */}
+          <motion.div {...fade(0.6)} className="flex items-center gap-4 mb-10 flex-wrap">
+            <a href="#work" className="btn-primary">
+              <ArrowDown size={16} /> Learn More
+            </a>
+            <a
+              href={pdfFile}
+              download="Divjot_Bhogal_2026.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-outline"
+            >
+              <Download size={16} /> Resume
+            </a>
+          </motion.div>
+
+          {/* Socials */}
+          <motion.div {...fade(0.7)} className="flex items-center gap-5">
+            <a
+              href="https://www.linkedin.com/in/divjot-bhogal"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-gray-600 hover:text-accent transition-colors duration-200"
+            >
+              <LinkedInIcon size={22} />
+            </a>
+            <a
+              href="https://github.com/AltraDiv"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-gray-600 hover:text-accent transition-colors duration-200"
+            >
+              <GitHubIcon size={22} />
+            </a>
+          </motion.div>
+
+        </div>
       </div>
 
-      {/* Scroll indicator */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 2 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2"
-      >
-        <div className="w-6 h-10 rounded-full border-2 border-white/20 flex items-start justify-center p-1.5">
-          <motion.div
-            animate={{ y: [0, 12, 0] }}
-            transition={{ duration: 1.5, repeat: Infinity }}
-            className="w-1.5 h-1.5 rounded-full bg-accent-light"
-          />
-        </div>
-      </motion.div>
     </section>
   );
 };

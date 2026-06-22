@@ -41,16 +41,16 @@ const Education: React.FC = () => {
         {/* High School */}
         <div className="p-5 rounded-xl bg-white/[0.03] border border-white/5 hover:border-accent/20 transition-all duration-300">
           <div className="flex items-start gap-4">
-            <div className="p-3 rounded-xl bg-purple-500/10 text-purple-400 shrink-0">
+            <div className="p-3 rounded-xl bg-blue-500/10 text-blue-400 shrink-0">
               <Award size={24} />
             </div>
             <div className="flex-1">
               <div className="flex flex-wrap items-start justify-between gap-2">
                 <div>
                   <h3 className="text-lg font-semibold text-white">High School Diploma</h3>
-                  <p className="text-purple-400 text-sm">Father Michael Goetz Secondary School</p>
+                  <p className="text-blue-400 text-sm">Father Michael Goetz Secondary School</p>
                 </div>
-                <span className="chip !bg-purple-500/10 !text-purple-400 !border-purple-500/20">2017 - 2020</span>
+                <span className="chip !bg-blue-500/10 !text-blue-400 !border-blue-500/20">2017 - 2020</span>
               </div>
               <p className="text-gray-400 text-sm mt-2">92% average · ICT SHSM Certificate Red Emblem</p>
             </div>

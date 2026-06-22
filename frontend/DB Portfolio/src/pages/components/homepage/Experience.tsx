@@ -65,7 +65,7 @@ const Experience: React.FC = () => {
 
       <div className="relative">
         {/* Timeline line */}
-        <div className="absolute left-[11px] top-2 bottom-2 w-px bg-gradient-to-b from-accent via-purple-500/50 to-transparent" />
+        <div className="absolute left-[11px] top-2 bottom-2 w-px bg-gradient-to-b from-accent via-blue-500/50 to-transparent" />
 
         <div className="space-y-8">
           {experiences.map((exp, index) => (
@@ -88,7 +88,7 @@ const Experience: React.FC = () => {
                     <h3 className="text-lg font-semibold text-white">{exp.title}</h3>
                     <p className="text-accent-light flex items-center gap-1.5 text-sm">
                       <Building2 size={14} />
-                      {exp.company} — {exp.location}
+                      {exp.company}, {exp.location}
                     </p>
                   </div>
                   <span className="text-xs text-gray-500 flex items-center gap-1 whitespace-nowrap">

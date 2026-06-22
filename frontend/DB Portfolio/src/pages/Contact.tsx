@@ -30,7 +30,7 @@ const contactLinks = [
     label: 'GitHub',
     value: 'AltraDiv',
     href: 'https://github.com/AltraDiv',
-    color: 'from-purple-500 to-pink-500',
+    color: 'from-blue-600 to-blue-400',
   },
 ];
 
@@ -52,7 +52,7 @@ const Contact: React.FC = () => {
             Get in <span className="gradient-text">Touch</span>
           </h1>
           <p className="max-w-lg mx-auto text-gray-400 text-lg">
-            I'd love to hear from you! Whether it's about a role, a project, or just to connect — feel free to reach out.
+            I'd love to hear from you! Whether it's about a role, a project, or just to connect, feel free to reach out.
           </p>
         </motion.div>
 

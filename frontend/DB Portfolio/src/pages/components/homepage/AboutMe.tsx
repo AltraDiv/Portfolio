@@ -20,12 +20,13 @@ const AboutMe: React.FC = () => {
     >
       <h2 className="section-heading gradient-text mb-6">About Me</h2>
       <p className="text-gray-400 leading-relaxed mb-8 text-lg">
-        Hi, I'm Divjot Bhogal — a Software Engineer with a B.Math in Computational Mathematics 
-        (Minor in Computing) from the University of Waterloo. I specialize in building scalable 
-        backend systems, AI-powered products, and real-time infrastructure. Most recently, I was 
-        a Founding Software Engineer at Kindr, where I built healthcare AI agents serving 2,200+ 
-        calls/mo across 52+ clinics. I'm passionate about large-scale systems, AI/ML integration, 
-        and shipping impactful features fast.
+        Hi, I'm Divjot Bhogal, a Software Engineer with a B.Math in Computational Mathematics
+        (Minor in Computing) from the University of Waterloo. I specialize in building scalable
+        backend systems, AI-powered products, and real-time infrastructure. Most recently, I was
+        a Founding Software Engineer at Kindr, where I built healthcare AI agents serving 2,200+
+        calls/mo across 52+ clinics. Outside of work, I'm building my own local AI inference
+        server, a home Jarvis that runs open-source models privately on my own hardware. I'm
+        passionate about large-scale systems, AI/ML integration, and shipping things that matter.
       </p>
 
       {/* Stats */}

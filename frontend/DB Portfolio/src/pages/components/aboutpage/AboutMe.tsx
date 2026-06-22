@@ -90,7 +90,7 @@ const AboutMe: React.FC = () => {
             <div className="text-center p-4 rounded-xl bg-white/[0.03] border border-white/5">
               <p className="text-2xl mb-2">🎮</p>
               <h3 className="text-white font-semibold mb-1">PickUpESports</h3>
-              <p className="text-gray-500 text-sm">Founder — React/Vite + FastAPI + PostgreSQL platform deployed on AWS</p>
+              <p className="text-gray-500 text-sm">Founder, React/Vite + FastAPI + PostgreSQL platform deployed on AWS</p>
             </div>
           </div>
         </motion.div>

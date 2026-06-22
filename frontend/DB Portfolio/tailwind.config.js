@@ -8,9 +8,9 @@ export default {
     extend: {
       colors: {
         accent: {
-          DEFAULT: '#6366f1',
-          light: '#818cf8',
-          dark: '#4f46e5',
+          DEFAULT: '#3b82f6',
+          light: '#60a5fa',
+          dark: '#2563eb',
         },
       },
       animation: {
