@@ -131,7 +131,7 @@ const Experience: React.FC = () => {
 
       {/* Entries */}
       <div className="max-w-6xl mx-auto px-6 lg:px-10">
-        {experiences.map((exp, index) => (
+        {experiences.map((exp) => (
           <motion.div
             key={exp.company}
             initial={{ opacity: 0, y: 30 }}
